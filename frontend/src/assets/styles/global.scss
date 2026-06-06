@@ -1,0 +1,176 @@
+/* ========================================
+   Learning Web Site — Global Design System
+   Warm editorial · DM Sans · Amber accent
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
+:root {
+  /* Brand colors */
+  --amber-50: #FFFBEB;
+  --amber-100: #FEF3C7;
+  --amber-200: #FDE68A;
+  --amber-400: #FBBF24;
+  --amber-500: #F59E0B;
+  --amber-600: #D97706;
+  --amber-700: #B45309;
+  --amber-800: #92400E;
+
+  --stone-50: #FAFAF9;
+  --stone-100: #F5F5F4;
+  --stone-200: #E7E5E4;
+  --stone-300: #D6D3D1;
+  --stone-400: #A8A29E;
+  --stone-500: #78716C;
+  --stone-700: #44403C;
+  --stone-800: #292524;
+  --stone-900: #1C1917;
+
+  /* Surfaces */
+  --bg-warm: #FFF8F0;
+  --bg-card: rgba(255, 255, 255, 0.88);
+  --bg-glass: rgba(255, 255, 255, 0.75);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(245,158,11,0.10);
+  --shadow-lg: 0 8px 32px rgba(245,158,11,0.12);
+
+  /* Text */
+  --text-primary: var(--stone-900);
+  --text-secondary: var(--stone-500);
+  --text-muted: var(--stone-400);
+
+  /* Accent */
+  --accent: var(--amber-500);
+  --accent-dark: var(--amber-600);
+  --accent-light: var(--amber-100);
+}
+
+/* Dark mode overrides */
+html.dark {
+  --bg-warm: #1C1917;
+  --bg-card: rgba(41, 37, 36, 0.9);
+  --bg-glass: rgba(41, 37, 36, 0.75);
+  --text-primary: #E7E5E4;
+  --text-secondary: #A8A29E;
+  --text-muted: #78716C;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #app {
+  height: 100%;
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-warm);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-dark); }
+
+/* ========== Utility Classes ========== */
+
+.page-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+.page-wrap-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: var(--accent);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Glass card */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 158, 11, 0.10);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Fade-up animation */
+.fade-up {
+  animation: fadeUp 0.5s ease both;
+}
+.fade-up-1 { animation: fadeUp 0.5s ease 0.1s both; }
+.fade-up-2 { animation: fadeUp 0.5s ease 0.2s both; }
+.fade-up-3 { animation: fadeUp 0.5s ease 0.3s both; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Skeleton pulse */
+.skeleton-pulse {
+  background: linear-gradient(90deg, var(--stone-100) 25%, var(--stone-200) 50%, var(--stone-100) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease infinite;
+  border-radius: 10px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Markdown content (keep consistent) */
+.markdown-content {
+  h1, h2, h3, h4 { margin-top: 1.5em; margin-bottom: 0.8em; color: var(--text-primary); }
+  h1 { font-size: 2em; font-weight: 700; border-bottom: 1px solid var(--stone-200); padding-bottom: 0.3em; }
+  h2 { font-size: 1.5em; font-weight: 600; border-bottom: 1px solid var(--stone-200); padding-bottom: 0.3em; }
+  p { margin-bottom: 1em; line-height: 1.8; color: var(--text-primary); }
+  ul, ol { padding-left: 2em; margin-bottom: 1em; }
+  blockquote {
+    border-left: 4px solid var(--accent);
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    background: rgba(245,158,11,0.04);
+    border-radius: 0 10px 10px 0;
+  }
+  code {
+    background: rgba(0,0,0,0.05);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--accent-700);
+  }
+  pre {
+    background: var(--stone-800);
+    padding: 20px;
+    border-radius: 12px;
+    overflow-x: auto;
+    margin: 1em 0;
+    code { background: transparent; padding: 0; color: #E7E5E4; }
+  }
+  img { max-width: 100%; border-radius: 12px; margin: 1em 0; }
+}

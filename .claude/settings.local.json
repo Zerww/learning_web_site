@@ -1,4 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(pip install *)",
+      "Bash(curl -s -X POST http://localhost:8000/api/v1/auth/login -H 'Content-Type: application/json' -d '{\"username\":\"admin\",\"password\":\"admin123\"}')",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('data',{}\\).get\\('access_token',''\\)[:50]\\)\")",
+      "Bash(curl -s -o /dev/null -w \"Home page: %{http_code}\\\\n\" https://slick-boats-lose.loca.lt/)",
+      "Bash(curl -s -o /dev/null -w \"API home: %{http_code}\\\\n\" https://slick-boats-lose.loca.lt/api/v1/home/)"
+    ]
+  },
   "enabledPlugins": {
     "document-skills@anthropic-agent-skills": true
   }
